@@ -41,6 +41,15 @@ mkfs.ext4 /dev/loop0
 mount /dev/loop0 /mnt/
 ```
 
+Automatické připojení po startu
+
+```
+# /etc/fstab
+/dev/data/public-share	/opt/share	ext4	defaults	0	2
+LABEL=share				/home		ext4	defaults	0	2
+10.0.2.15:/opt/share	/share		nfs		defaults	0	2
+```
+
 # Raid
 
 Druhy raidu

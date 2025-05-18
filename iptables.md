@@ -55,3 +55,11 @@ Instalace balíčku pro obnovení pravidel po startu systému
 ```sh
 apt install iptables-persistent
 ```
+
+Pravidla uložena v `/etc/iptables/rules.v4`
+
+Znovu načtení pravidel
+
+```sh
+service iptables restart
+```
