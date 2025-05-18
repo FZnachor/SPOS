@@ -14,6 +14,30 @@ Ahoj svete
 QUIT
 ```
 
+Testovací přípojení protokolem IMAP
+
+```
+telnet localhost 143
+a login user1 heslo
+a list "" "*"
+a status inbox (messages)
+a examine inbox
+a fetch 1 body[]
+a logout
+```
+
+Testovací přípojení protokolem POP3
+
+```
+telnet localhost 110
+USER user1
+PASS heslo
+STAT
+LIST
+RETR 1
+QUIT
+```
+
 # Mutt
 
 > Klient pro čtení e-mailů v terminálu
@@ -66,4 +90,44 @@ info@domena2.local	root
 ```sh
 postmap /etc/postfix/virtual_domains
 postmap /etc/postfix/virtual
+```
+
+# Dovecot IMAP a POP3
+
+Porty
+- **110** POP3
+- **995** POP3 + SSL
+- **143** IMAP
+- **993** IMAP + SSL
+
+Instalace POP3
+
+```sh
+apt install dovecot-pop3d
+```
+
+Instalace IMAP
+
+```sh
+apt install dovecot-imapd
+```
+
+Nastavení lokace e-mailů
+
+```
+# /etc/dovecot/conf.d/10-mail.conf
+mail_location = maildir:~/Maildir
+```
+
+Nastavení SSL
+
+```sh
+openssl req -new -x509 -nodes -out "/etc/ssl/certs/dovecot.pem" -keyout "/etc/ssl/private/dovecot.pem"
+```
+
+```
+# /etc/dovecot/conf.d/10-ssl.conf
+ssl = yes
+ssl_cert = </etc/ssl/certs/dovecot.pem
+ssl_key = </etc/ssl/private/dovecot.key
 ```
