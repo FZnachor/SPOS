@@ -4,6 +4,10 @@
 apt install nfs-kernel-server nfs-common
 ```
 
+Konfigurační soubor
+- `/etc/exports`
+- [ukázka](conf/nfs.conf)
+
 Reload nastavení
 
 ```sh
@@ -29,6 +33,10 @@ Instalace
 ```sh
 apt install samba smbclient cifs-utils
 ```
+
+Konfigurační soubor
+- `/etc/samba/smb.conf`
+- [ukázka](conf/smb.conf)
 
 Vytvoření uživatele s domovským adresářem
 
