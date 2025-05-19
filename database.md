@@ -64,3 +64,10 @@ su postgres
 psql
 psql -U user -W
 ```
+
+Vytvoření uživatele a databáze s daným majitelem
+
+```sh
+createuser --pwprompt user
+createdb -O user database
+```
