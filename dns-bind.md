@@ -48,7 +48,8 @@ Konfigurační soubory
 Nová zóna `domena.local`
 
 ```
-zone "jindra.spos." in {
+# /etc/bind/named.conf.local
+zone "domena.local." in {
 	type master;
 	file "/etc/bind/db.domena.local";
 };
@@ -57,6 +58,7 @@ zone "jindra.spos." in {
 Poslech na lokálních adresách
 
 ```
+# /etc/bind/named.conf.options
 options {
 	listen-on {127.0.0.1;};
 	listen-on-v6 {::1;};
